@@ -4,7 +4,8 @@ using System.Collections;
 public class Bullet : MonoBehaviour {
 
 	// Use this for initialization
-	void Start () {
+	void Start (){
+		Destroy (gameObject, 2);
 	
 	}
 	
