@@ -5,7 +5,7 @@
       <File FileName="Assets/Scripts/Player.cs" Line="16" Column="1" />
       <File FileName="Assets/Scripts/Bullet.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/Ship.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/SkyboxCamera.cs" Line="11" Column="38" />
+      <File FileName="Assets/Scripts/SkyboxCamera.cs" Line="8" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
