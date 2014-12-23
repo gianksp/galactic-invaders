@@ -12,8 +12,6 @@ public class Player : Ship {
 	void Update () {
 
 		transform.Translate(Vector3.left * -Input.acceleration.x * 100 * Time.deltaTime,Space.World);
-		transform.position = new Vector3(Mathf.Clamp(Time.time, -15.0F, 15.0F), 0, 0);
-
 		transform.Rotate(Vector3.forward * -Input.acceleration.x * 200 * Time.deltaTime);
 
 		if (Input.touchCount > 0) {
