@@ -16,9 +16,11 @@ public class Bullet : MonoBehaviour {
 	
 	}
 
+	/// <summary>
+	/// Destroy bullet on collision
+	/// </summary>
+	/// <param name="collision">Collision.</param>
 	void OnCollisionEnter(Collision collision) {
-
-		Instantiate (explosion, collision.transform.position, Quaternion.identity);
-		Destroy(gameObject);
+		Destroy (gameObject);
 	}
 }

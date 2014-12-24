@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Ship : MonoBehaviour {
+public class Ship : SpaceObject {
 
 	//Weapon system
 	public Transform[] cannons;
@@ -20,14 +20,12 @@ public class Ship : MonoBehaviour {
 	}
 
 	protected IEnumerator Shoot() {
-
-
 		if (!isShooting) {
 			isShooting = true;
 			foreach (Transform cannon in cannons) {
 				
 				GameObject bullet = (GameObject)Instantiate(bulletPrefab, cannon.position, cannon.rotation);
-				bullet.rigidbody.AddForce(Vector3.forward*6000f);
+				bullet.rigidbody.AddForce(transform.forward*6000f);
 				
 			}
 			yield return new WaitForSeconds(reattack);
@@ -35,6 +33,4 @@ public class Ship : MonoBehaviour {
 		}
 
 	}
-
-
 }

@@ -23,18 +23,19 @@ public class Player : Ship {
 		PlayerMovementClamping ();
 	}
 
+	/// <summary>
+	/// Dont let player get out of the screen
+	/// </summary>
 	void PlayerMovementClamping() {
 		var viewpointCoord = Camera.main.WorldToViewportPoint(transform.position);
 		
 		if (viewpointCoord.x < 0.0f)
 		{
-			Debug.Log("Left edge of view");
 			viewpointCoord.x = 0.0f;
 			transform.position = Camera.main.ViewportToWorldPoint(viewpointCoord);
 		}
 		else if (viewpointCoord.x > 1.0f)
 		{
-			Debug.Log("Right edge of view");
 			viewpointCoord.x = 1.0f;
 			transform.position = Camera.main.ViewportToWorldPoint(viewpointCoord);
 		}

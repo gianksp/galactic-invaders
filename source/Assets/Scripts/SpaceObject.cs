@@ -1,15 +1,17 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Master : MonoBehaviour {
+public class SpaceObject : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
+	public GameObject explosion;
+
+	/// <summary>
+	/// Explosion when collides against anything else
+	/// </summary>
+	/// <param name="collision">Collision.</param>
+	protected void OnCollisionEnter(Collision collision) {
+
+		Instantiate (explosion, collision.transform.position, Quaternion.identity);
+		Destroy (gameObject);
 	}
 }

@@ -1,13 +1,14 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Player.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Bullet.cs">
     <Files>
-      <File FileName="Assets/Scripts/Player.cs" Line="15" Column="93" />
-      <File FileName="Assets/Scripts/Bullet.cs" Line="8" Column="3" />
-      <File FileName="Assets/Scripts/Ship.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Player.cs" Line="21" Column="4" />
+      <File FileName="Assets/Scripts/Bullet.cs" Line="22" Column="23" />
+      <File FileName="Assets/Scripts/Ship.cs" Line="4" Column="34" />
       <File FileName="Assets/Scripts/SkyboxCamera.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/Asteroid.cs" Line="8" Column="27" />
-      <File FileName="Assets/Scripts/GameManager.cs" Line="14" Column="18" />
+      <File FileName="Assets/Scripts/GameManager.cs" Line="10" Column="46" />
+      <File FileName="Assets/Scripts/SpaceObject.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
