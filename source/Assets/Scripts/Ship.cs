@@ -9,6 +9,10 @@ public class Ship : SpaceObject {
 	public float reattack = 1.0f;
 	public bool isShooting;
 
+	public float speed;
+
+	public AudioClip shootSound;
+
 	// Use this for initialization
 	void Start () {
 	
@@ -18,7 +22,7 @@ public class Ship : SpaceObject {
 	void LateUpdate () {
 	
 		//Move forward
-		transform.Translate (Vector3.forward*2, Space.Self);
+		transform.Translate (Vector3.forward*speed, Space.Self);
 
 		//Reset flares
 		foreach (Transform cannon in cannons) {
@@ -39,7 +43,9 @@ public class Ship : SpaceObject {
 				GameObject bullet = (GameObject)Instantiate(bulletPrefab, cannon.position, cannon.rotation);
 				LensFlare flare = cannon.GetComponent<LensFlare>();
 				flare.brightness = 1f;
-				bullet.rigidbody.AddForce(transform.forward*20000f);
+				bullet.tag = transform.root.transform.tag;
+				bullet.rigidbody.AddForce(transform.forward*8000f);
+				audio.PlayOneShot(shootSound);
 				
 			}
 			yield return new WaitForSeconds(reattack);

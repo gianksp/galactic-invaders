@@ -6,6 +6,8 @@ public class Bullet : MonoBehaviour {
 	public GameObject explosion;
 	public Material color;
 
+	public string ownerTag;
+
 	// Use this for initialization
 	void Start (){
 		Destroy (gameObject, 10);

@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		InvokeRepeating("GenerateDebris", 1, 0.3F);
+		//InvokeRepeating("GenerateDebris", 1, 10F);
 		InvokeRepeating("GenerateEnemies", 1, 1F);
 		player = GameObject.FindGameObjectWithTag ("Player");
 	}
@@ -29,11 +29,14 @@ public class GameManager : MonoBehaviour {
 	/// </summary>
 	void GenerateDebris () {
 
-		GameObject asteroid = (GameObject)Instantiate (asteroidPrefab, new Vector3 (Random.Range (-30, 30), Random.Range (-15, 15), Random.Range (player.transform.position.z + 300, player.transform.position.z +  550)), Quaternion.Euler(new Vector3(0,180,0)));
-		int size = Random.Range (1, 5);
-		asteroid.transform.localScale = new Vector3 (size,size,size);
-		asteroid.rigidbody.AddForce (new Vector3 (0, 0, -Random.Range (100, 200)),ForceMode.Impulse);
-		asteroid.transform.rotation = Quaternion.Euler(new Vector3(Random.Range(0,180), Random.Range(0,180), Random.Range(0,180)));
+		if (player) {
+			float z = Camera.main.transform.position.z;
+			GameObject asteroid = (GameObject)Instantiate (asteroidPrefab, new Vector3 (Random.Range (-40, 40), Random.Range (-15, 15), Random.Range (z + 400, z + 600)), Quaternion.Euler (new Vector3 (0, 180, 0)));
+			int size = Random.Range (1, 5);
+			asteroid.transform.localScale = new Vector3 (size, size, size);
+			asteroid.rigidbody.AddForce (new Vector3 (0, 0, -Random.Range (100, 200)), ForceMode.Impulse);
+			asteroid.transform.rotation = Quaternion.Euler (new Vector3 (Random.Range (0, 180), Random.Range (0, 180), Random.Range (0, 180)));
+		}
 		//asteroid.rigidbody.AddTorque (new Vector3 (Random.Range (-500, 500), Random.Range (-500, 500), Random.Range (-500, 500)));
 	}
 
@@ -41,9 +44,11 @@ public class GameManager : MonoBehaviour {
 	/// Geneate enemies
 	/// </summary>
 	void GenerateEnemies () {
-		
-		GameObject enemy = (GameObject)Instantiate (enemyPrefab, new Vector3 (Random.Range (-10, 10), Random.Range (-2, 2), Random.Range (player.transform.position.z + 300, player.transform.position.z +  550)), Quaternion.Euler(new Vector3(0,180,0)));
-		//enemy.rigidbody.AddForce (new Vector3 (0, 0, -Random.Range (100, 200)),ForceMode.Impulse);
+
+		if (player) {
+			GameObject enemy = (GameObject)Instantiate (enemyPrefab, new Vector3 (Random.Range (-20, 20), player.transform.position.y, Random.Range (player.transform.position.z + 400, player.transform.position.z + 600)), Quaternion.Euler (new Vector3 (0, 180, 0)));
+		}
+			//enemy.rigidbody.AddForce (new Vector3 (0, 0, -Random.Range (100, 200)),ForceMode.Impulse);
 	}
 
 	/// <summary>
