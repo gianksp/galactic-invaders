@@ -15,17 +15,31 @@ public class Ship : SpaceObject {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void LateUpdate () {
 	
-	}
+		//Move forward
+		transform.Translate (Vector3.forward*2, Space.Self);
 
+		//Reset flares
+		foreach (Transform cannon in cannons) {
+			
+			LensFlare flare = cannon.GetComponent<LensFlare>();
+			if (flare.brightness >= 0) {
+				flare.brightness = flare.brightness - 0.1f;
+				Debug.Log(flare.brightness.ToString());
+			}
+		}
+	}
+	
 	protected IEnumerator Shoot() {
 		if (!isShooting) {
 			isShooting = true;
 			foreach (Transform cannon in cannons) {
 				
 				GameObject bullet = (GameObject)Instantiate(bulletPrefab, cannon.position, cannon.rotation);
-				bullet.rigidbody.AddForce(transform.forward*6000f);
+				LensFlare flare = cannon.GetComponent<LensFlare>();
+				flare.brightness = 1f;
+				bullet.rigidbody.AddForce(transform.forward*20000f);
 				
 			}
 			yield return new WaitForSeconds(reattack);
@@ -33,4 +47,5 @@ public class Ship : SpaceObject {
 		}
 
 	}
+
 }

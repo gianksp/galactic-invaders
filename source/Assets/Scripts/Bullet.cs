@@ -4,11 +4,12 @@ using System.Collections;
 public class Bullet : MonoBehaviour {
 
 	public GameObject explosion;
+	public Material color;
 
 	// Use this for initialization
 	void Start (){
 		Destroy (gameObject, 10);
-	
+		transform.renderer.material = color;
 	}
 	
 	// Update is called once per frame

@@ -12,4 +12,12 @@ public class Asteroid : SpaceObject {
 	void Update () {
 	
 	}
+
+	/// <summary>
+	/// Raises the collision enter event.
+	/// </summary>
+	/// <param name="collision">Collision.</param>
+	void OnCollisionEnter(Collision collision) {
+
+	}
 }
