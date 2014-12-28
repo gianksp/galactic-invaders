@@ -8,6 +8,7 @@ public class Ship : SpaceObject {
 	public GameObject bulletPrefab;
 	public float reattack = 1.0f;
 	public bool isShooting;
+	public float overheat = 0;
 
 	public float speed;
 
@@ -33,6 +34,17 @@ public class Ship : SpaceObject {
 				Debug.Log(flare.brightness.ToString());
 			}
 		}
+
+		if (overheat >= 100) {
+			DestroyAt(transform.position);
+		}
+
+		if (overheat > 0f) {
+			overheat -=0.1f;
+			if (overheat < 0f) {
+				overheat = 0f;
+			}
+		}
 	}
 	
 	protected IEnumerator Shoot() {
@@ -44,11 +56,12 @@ public class Ship : SpaceObject {
 				LensFlare flare = cannon.GetComponent<LensFlare>();
 				flare.brightness = 1f;
 				bullet.tag = transform.root.transform.tag;
-				bullet.rigidbody.AddForce(transform.forward*8000f);
+				bullet.rigidbody.AddForce(transform.forward*9000f*speed);
 				audio.PlayOneShot(shootSound);
+				overheat+=3;
+				yield return new WaitForSeconds(reattack/2);
 				
 			}
-			yield return new WaitForSeconds(reattack);
 			isShooting = false;
 		}
 
