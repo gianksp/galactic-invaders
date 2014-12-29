@@ -36,6 +36,7 @@ public class Ship : SpaceObject {
 		}
 
 		if (overheat >= 100) {
+			overheat = 100;
 			DestroyAt(transform.position);
 		}
 

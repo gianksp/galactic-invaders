@@ -1,8 +1,9 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Colors/Red.shader">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Energy.cs">
     <Files>
-      <File FileName="Assets/Scripts/GameManager.cs" Line="50" Column="94" />
+      <File FileName="Assets/Scripts/NavigationManager.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/GameManager.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/Ship.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/Player.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/Bullet.cs" Line="1" Column="1" />
@@ -11,7 +12,7 @@
       <File FileName="Assets/Scripts/Enemy.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/FollowCamera.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/EffectCamera.cs" Line="1" Column="1" />
-      <File FileName="Assets/Colors/Red.shader" Line="3" Column="47" />
+      <File FileName="Assets/Scripts/Energy.cs" Line="4" Column="19" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

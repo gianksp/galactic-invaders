@@ -30,7 +30,7 @@ public class GameManager : MonoBehaviour {
 
 		if (player) {
 			player.gameObject.GetComponent<Player> ().score += 0.01f;
-			gameObject.GetComponent<GUIText> ().text = "Overheating: " + player.gameObject.GetComponent<Player> ().overheat.ToString("0.0") + "%\nScore: " + player.gameObject.GetComponent<Player> ().score.ToString("0.0");
+			gameObject.GetComponent<GUIText> ().text = "Score: " + player.gameObject.GetComponent<Player> ().score.ToString("0.0");
 			recordedScore = player.gameObject.GetComponent<Player> ().score;
 		}
 
