@@ -40,6 +40,7 @@ public class SpaceObject : MonoBehaviour {
 		
 		if (transform.tag != "Player") {
 			if (player) {
+				player.gameObject.GetComponent<Player> ().cdKills ++;
 				player.gameObject.GetComponent<Player> ().score += 5;
 				float norm = player ? player.transform.position.z : 0;
 				float val = transform.position.z - norm;

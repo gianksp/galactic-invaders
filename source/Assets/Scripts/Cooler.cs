@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Energy : MonoBehaviour
+public class Cooler : MonoBehaviour
 {
 
 	public Player player;
@@ -12,7 +12,6 @@ public class Energy : MonoBehaviour
 	}
 
 	void Update() {
-		renderer.material.SetFloat("_Cutoff", Mathf.InverseLerp(0, 101, 101-player.overheat));
-		text.text = "Heat\n"+player.overheat.ToString("0")+"%";
+		renderer.material.SetFloat("_Cutoff", Mathf.InverseLerp(0, 10, 10-player.cdKills));
 	}
 }

@@ -9,8 +9,10 @@ public class GameManager : MonoBehaviour {
 	public GameObject player;
 
 	public bool gameOver;
+	public bool scoresRecorded;
 
 	public float recordedScore;
+	public float recordedKills;
 
 	public Material[] skyboxes;
 
@@ -19,7 +21,7 @@ public class GameManager : MonoBehaviour {
 
 		//Change skybox
 		RenderSettings.skybox=skyboxes[Random.Range(0,skyboxes.Length-1)];
-
+		Time.timeScale =1f;
 		InvokeRepeating("GenerateDebris", 1, 0.3F);
 		InvokeRepeating("GenerateEnemies", 1, 1F);
 		player = GameObject.FindGameObjectWithTag ("Player");
@@ -32,7 +34,10 @@ public class GameManager : MonoBehaviour {
 			player.gameObject.GetComponent<Player> ().score += 0.01f;
 			gameObject.GetComponent<GUIText> ().text = "Score: " + player.gameObject.GetComponent<Player> ().score.ToString("0.0");
 			recordedScore = player.gameObject.GetComponent<Player> ().score;
+			recordedKills = player.gameObject.GetComponent<Player>().totalKills;
 		}
+
+		Time.timeScale += 0.0001F;
 
 	}
 
@@ -61,7 +66,7 @@ public class GameManager : MonoBehaviour {
 		if (!gameOver) {
 			gameOver = true;
 			yield return new WaitForSeconds(2);
-			Application.LoadLevel("Main");
+			//Application.LoadLevel("Main");
 		}
 		
 	}
@@ -83,15 +88,30 @@ public class GameManager : MonoBehaviour {
 	void OnGUI () {
 
 		if (!player) {
-			float lastScore = PlayerPrefs.GetFloat("score");
+
+			if (!scoresRecorded) {
+			scoresRecorded = true;
+			float lastScore  = PlayerPrefs.GetFloat("score");
+			float totalScore = PlayerPrefs.GetFloat("total_score");
+			float totalKills = PlayerPrefs.GetFloat("total_kills");
+			float totalDaths = PlayerPrefs.GetFloat("total_deaths");
+
+			PlayerPrefs.SetFloat("total_score",totalScore+recordedScore);
+			PlayerPrefs.SetFloat("total_kills",totalKills+recordedKills);
+			PlayerPrefs.SetFloat("total_deaths",totalDaths+1);
+
 			if (recordedScore > lastScore) {
 				PlayerPrefs.SetFloat("score",recordedScore);
 			}
-
+			}
 
 						if (GUI.Button (new Rect (Screen.width / 2 - 100, Screen.height / 2 - 90, 200, 50), "Try again")) {
 								Application.LoadLevel ("Main");
 						}
+
+			if (GUI.Button (new Rect (Screen.width / 2 - 100, Screen.height / 2, 200, 50), "Main Menu")) {
+				Application.LoadLevel ("Welcome");
+			}
 				}
 	}
 
