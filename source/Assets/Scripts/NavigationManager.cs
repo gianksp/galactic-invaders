@@ -25,7 +25,9 @@ public class NavigationManager : MonoBehaviour {
 			float totalKills = PlayerPrefs.GetFloat("total_kills");
 			float totalDaths = PlayerPrefs.GetFloat("total_deaths");
 
-			text.text = "Best score: "+lastScore.ToString("0,0")+"\n"+"Total score: "+totalScore.ToString("0,0")+"\n"+"Total kills: "+totalKills.ToString("0,0")+"\n"+"Total deaths: "+totalDaths.ToString("0,0")+"\n"+"TOP GUN SCORE: "+(totalKills/totalDaths).ToString("0,0");
+
+			if (text)
+				text.text = "Best score: "+lastScore.ToString("0,0")+"\n"+"Total score: "+totalScore.ToString("0,0")+"\n"+"Total kills: "+totalKills.ToString("0,0")+"\n"+"Total deaths: "+totalDaths.ToString("0,0")+"\n"+"TOP GUN SCORE: "+(totalKills/totalDaths).ToString("0,0");
 //
 //			GUI.Label(new Rect(Screen.width/2-80,10,160,60),"Best score: "+lastScore);
 //			GUI.Label(new Rect(Screen.width/2-80,30,160,60),"Total score: "+totalScore);
@@ -34,7 +36,7 @@ public class NavigationManager : MonoBehaviour {
 //			GUI.Label(new Rect(Screen.width/2-80,900,160,60),"TOP GUN SCORE: "+totalKills/totalDaths);
 
 			//Go to game
-			if (GUI.Button(new Rect(Screen.width/2-100,Screen.height-100,200,90),"Start")) {
+			if (GUI.Button(new Rect(Screen.width/2-100,Screen.height-90,200,80),"Start")) {
 				Application.LoadLevel("Main");
 			}
 
